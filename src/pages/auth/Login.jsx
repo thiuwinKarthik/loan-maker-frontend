@@ -26,7 +26,7 @@ const Login = () => {
 
     try {
       // ✅ Step 1: Login & get token
-      const loginResponse = await fetch("https://loan-maker-backend-production.up.railway.app/api/auth/login", {
+      const loginResponse = await fetch("https://loan-maker-backend.onrender.com/api/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -52,7 +52,7 @@ const Login = () => {
       localStorage.setItem("token", token);
 
       // ✅ Step 3: Fetch profile
-      const profileResponse = await fetch("https://loan-maker-backend-production.up.railway.app/api/users/profile", {
+      const profileResponse = await fetch("https://loan-maker-backend.onrender.com/api/users/profile", {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
