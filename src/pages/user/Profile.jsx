@@ -15,7 +15,7 @@ const UserProfile = () => {
   const getProfile = async () => {
     try {
       const token = localStorage.getItem("token"); // JWT token
-      const response = await fetch("https://loan-maker-backend-production.up.railway.app/api/users/profile", {
+      const response = await fetch("https://loan-maker-backend.onrender.com/api/users/profile", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -54,7 +54,7 @@ const UserProfile = () => {
       setUpdating(true);
       const token = localStorage.getItem("token");
 
-      const response = await fetch("https://loan-maker-backend-production.up.railway.app/api/users/profile", {
+      const response = await fetch("https://loan-maker-backend.onrender.com/api/users/profile", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
