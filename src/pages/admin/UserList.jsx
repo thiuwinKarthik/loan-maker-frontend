@@ -13,13 +13,13 @@ const UsersPage = () => {
     if (!token) return;
     setLoading(true);
     try {
-      const resAdmin = await fetch("https://loan-maker-backend-production.up.railway.app/api/users/profile", {
+      const resAdmin = await fetch("https://loan-maker-backend.onrender.com/api/users/profile", {
         headers: { Authorization: `Bearer ${token}` },
       });
       const adminData = await resAdmin.json();
       setAdmin(adminData);
 
-      const resUsers = await fetch("https://loan-maker-backend-production.up.railway.app/api/users/all", {
+      const resUsers = await fetch("https://loan-maker-backend.onrender.com/api/users/all", {
         headers: { Authorization: `Bearer ${token}` },
       });
       const usersData = await resUsers.json();
