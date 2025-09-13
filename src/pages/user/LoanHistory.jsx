@@ -20,14 +20,14 @@ const LoanHistory = () => {
     if (!token) return;
     setLoading(true);
     try {
-      const resUser = await fetch("https://loan-maker-backend-production.up.railway.app/api/users/profile", {
+      const resUser = await fetch("https://loan-maker-backend.onrender.com/api/users/profile", {
         headers: { Authorization: `Bearer ${token}` },
       });
       const userData = await resUser.json();
       setUser(userData);
 
       const resLoans = await fetch(
-        `https://loan-maker-backend-production.up.railway.app/api/loans/applications/${userData.id}`,
+        `https://loan-maker-backend.onrender.com/api/loans/applications/${userData.id}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       const loansData = await resLoans.json();
@@ -55,7 +55,7 @@ const LoanHistory = () => {
       } catch (_) {}
 
       const resOffers = await fetch(
-        `https://loan-maker-backend-production.up.railway.app/api/loans/offers/${userData.id}`,
+        `https://loan-maker-backend.onrender.com/api/loans/offers/${userData.id}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       const offersData = await resOffers.json();
