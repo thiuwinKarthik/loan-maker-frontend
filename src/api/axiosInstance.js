@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "https://loan-maker-backend-production.up.railway.app/api", // Spring Boot backend URL
+  baseURL: "https://loan-maker-backend.onrender.com/api", // Spring Boot backend URL
   headers: {
     "Content-Type": "application/json",
   },
