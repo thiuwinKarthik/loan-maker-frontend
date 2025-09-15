@@ -52,7 +52,7 @@ const LoanApply = () => {
     const fetchAssets = async () => {
       if (!user || !token) return;
       try {
-        const res = await fetch(`https://loan-maker-backend.onrender.com/api/assets/${user.id}`, {
+        const res = await fetch(`https://loan-maker-backend-production.up.railway.app/api/assets/${user.id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (!res.ok) throw new Error("Failed to fetch assets");
@@ -87,7 +87,7 @@ const LoanApply = () => {
 
     try {
       const res = await fetch(
-        `https://loan-maker-backend.onrender.com/api/loans/apply/${user.id}/${selectedProvider}/${selectedAsset}`,
+        `https://loan-maker-backend-production.up.railway.app/api/loans/apply/${user.id}/${selectedProvider}/${selectedAsset}`,
         {
           method: "POST",
           headers: {
