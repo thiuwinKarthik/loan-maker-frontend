@@ -32,7 +32,7 @@ const Reports = () => {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const resUsers = await fetch("https://loan-maker-backend.onrender.com/api/users/all", {
+        const resUsers = await fetch("https://loan-maker-backend-production.up.railway.app/api/users/all", {
           headers: { Authorization: `Bearer ${token}` },
         });
         const usersData = await resUsers.json();
@@ -41,7 +41,7 @@ const Reports = () => {
         const loansWithUser = await Promise.all(
           usersData.map(async (user) => {
             const resLoans = await fetch(
-              `https://loan-maker-backend.onrender.com/api/loans/applications/${user.id}`,
+              `https://loan-maker-backend-production.up.railway.app/api/loans/applications/${user.id}`,
               { headers: { Authorization: `Bearer ${token}` } }
             );
             const userLoans = resLoans.ok ? await resLoans.json() : [];
