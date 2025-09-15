@@ -28,7 +28,7 @@ const AdminLoans = () => {
   const fetchUsers = async () => {
     try {
       setLoading(true);
-      const res = await fetch("https://loan-maker-backend.onrender.com/api/users/all", {
+      const res = await fetch("https://loan-maker-backend-production.up.railway.app/api/users/all", {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (!res.ok) throw new Error("Failed to fetch users");
@@ -37,7 +37,7 @@ const AdminLoans = () => {
       const usersWithLoans = await Promise.all(
         data.map(async (user) => {
           const resLoans = await fetch(
-            `https://loan-maker-backend.onrender.com/api/loans/applications/${user.id}`,
+            `https://loan-maker-backend-production.up.railway.app/api/loans/applications/${user.id}`,
             { headers: { Authorization: `Bearer ${token}` } }
           );
           const loans = resLoans.ok ? await resLoans.json() : [];
@@ -79,7 +79,7 @@ const AdminLoans = () => {
 
     try {
       const res = await fetch(
-        `https://loan-maker-backend.onrender.com/api/admin/loans/${selectedLoan.id}/${actionType}`,
+        `https://loan-maker-backend-production.up.railway.app/api/admin/loans/${selectedLoan.id}/${actionType}`,
         {
           method: "PUT",
           headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
