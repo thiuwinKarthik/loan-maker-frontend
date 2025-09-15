@@ -19,7 +19,7 @@ const ManageAssets = () => {
   const fetchAssets = async () => {
     if (!user || !token) return;
     try {
-      const res = await fetch(`https://loan-maker-backend.onrender.com/api/assets/${user.id}`, {
+      const res = await fetch(`https://loan-maker-backend-production.up.railway.app/api/assets/${user.id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (!res.ok) throw new Error("Failed to fetch assets");
@@ -38,7 +38,7 @@ const ManageAssets = () => {
     }
     setIsLoading(true);
     try {
-      const res = await fetch(`https://loan-maker-backend.onrender.com/api/assets/${user.id}`, {
+      const res = await fetch(`https://loan-maker-backend-production.up.railway.app/api/assets/${user.id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -74,7 +74,7 @@ const ManageAssets = () => {
     if (!deleteAssetId) return;
     setIsDeleting(true);
     try {
-      const res = await fetch(`https://loan-maker-backend.onrender.com/api/assets/${deleteAssetId}`, {
+      const res = await fetch(`https://loan-maker-backend-production.up.railway.app/api/assets/${deleteAssetId}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
