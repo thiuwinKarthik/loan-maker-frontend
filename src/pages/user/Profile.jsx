@@ -5,10 +5,11 @@ import { toast } from "react-toastify";
 
 const UserProfile = () => {
   const [profile, setProfile] = useState({
-    name: "",
-    email: "",
-    phone: "",
-  });
+  name: "",
+  email: "",
+  phone: "",
+  creditScore: 0, // new field
+});
   const [updating, setUpdating] = useState(false);
 
   // Fetch logged-in user profile
@@ -28,10 +29,11 @@ const UserProfile = () => {
       const data = await response.json();
 
       setProfile({
-        name: data.name || "",
-        email: data.email || "",
-        phone: data.phone || "",
-      });
+  name: data.name || "",
+  email: data.email || "",
+  phone: data.phone || "",
+  creditScore: data.creditScore || 0,
+});
     } catch (err) {
       toast.error("Failed to load profile");
       console.error(err);
@@ -61,9 +63,10 @@ const UserProfile = () => {
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
-          name: profile.name,
-          phone: profile.phone,
-        }),
+        name: profile.name,
+        phone: profile.phone,
+        creditScore: profile.creditScore, // send credit score to backend
+}),
       });
 
       if (!response.ok) throw new Error("Failed to update profile");
@@ -131,6 +134,23 @@ const UserProfile = () => {
                 onChange={handleChange}
                 placeholder="Enter your phone number"
                 className="input-base"
+              />
+            </div>
+              {/* Credit Score */}
+           <div>
+              <label className="block mb-2 font-medium text-gray-600">
+                Credit Score
+              </label>
+              <input
+                type="number"
+                name="creditScore"
+                value={profile.creditScore}
+                onChange={handleChange}
+                placeholder="Enter your credit score"
+                className="input-base"
+                min={0}
+                max={1000}
+                required
               />
             </div>
 
