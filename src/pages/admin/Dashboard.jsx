@@ -31,19 +31,19 @@ const AdminDashboard = () => {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const resUsers = await fetch("https://loan-maker-backend-production.up.railway.app/api/users/stats", {
+        const resUsers = await fetch("https://loan-maker-backend.onrender.com/api/users/stats", {
           headers: { Authorization: `Bearer ${token}` },
         });
         const users = await resUsers.json();
         setUserStats(users);
 
-        const resLoans = await fetch("https://loan-maker-backend-production.up.railway.app/api/loans/stats", {
+        const resLoans = await fetch("https://loan-maker-backend.onrender.com/api/loans/stats", {
           headers: { Authorization: `Bearer ${token}` },
         });
         const loansData = await resLoans.json();
         setLoanStats(loansData);
 
-        const resAllUsers = await fetch("https://loan-maker-backend-production.up.railway.app/api/users/all", {
+        const resAllUsers = await fetch("https://loan-maker-backend.onrender.com/api/users/all", {
           headers: { Authorization: `Bearer ${token}` },
         });
         const allUsers = await resAllUsers.json();
@@ -51,7 +51,7 @@ const AdminDashboard = () => {
         const loansWithUser = await Promise.all(
           allUsers.map(async (user) => {
             const resUserLoans = await fetch(
-              `https://loan-maker-backend-production.up.railway.app/api/loans/applications/${user.id}`,
+              `https://loan-maker-backend.onrender.com/api/loans/applications/${user.id}`,
               { headers: { Authorization: `Bearer ${token}` } }
             );
             const userLoans = resUserLoans.ok ? await resUserLoans.json() : [];
