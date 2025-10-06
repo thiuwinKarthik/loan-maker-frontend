@@ -17,7 +17,7 @@ const AdminUsers = () => {
   const fetchUsers = async () => {
     try {
       setLoading(true);
-      const res = await fetch("https://loan-maker-backend.onrender.com", {
+      const res = await fetch("https://loan-maker-backend.onrender.com/api/users/all", {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (!res.ok) throw new Error("Failed to fetch users");
@@ -56,7 +56,7 @@ const AdminUsers = () => {
     setPromotingIds((prev) => [...prev, userId]);
 
     try {
-      const res = await fetch(`https://loan-maker-backend.onrender.com}`, {
+      const res = await fetch(`https://loan-maker-backend.onrender.com/api/admin/users/promote/${userId}`, {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,
