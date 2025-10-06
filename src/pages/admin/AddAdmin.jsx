@@ -17,7 +17,7 @@ const AdminUsers = () => {
   const fetchUsers = async () => {
     try {
       setLoading(true);
-      const res = await fetch("https://loan-maker-backend-production.up.railway.app/api/users/all", {
+      const res = await fetch("https://loan-maker-backend.onrender.com", {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (!res.ok) throw new Error("Failed to fetch users");
@@ -56,7 +56,7 @@ const AdminUsers = () => {
     setPromotingIds((prev) => [...prev, userId]);
 
     try {
-      const res = await fetch(`https://loan-maker-backend-production.up.railway.app/api/admin/users/promote/${userId}`, {
+      const res = await fetch(`https://loan-maker-backend.onrender.com}`, {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,
