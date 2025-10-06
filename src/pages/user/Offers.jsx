@@ -104,7 +104,7 @@ const Offers = () => {
     setError("");
 
     try {
-      const response = await fetch("https://loan-maker-backend-production.up.railway.app/api/ai/predict-and-recommend", {
+      const response = await fetch("https://loan-maker-backend.onrender.com/api/ai/predict-and-recommend", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
