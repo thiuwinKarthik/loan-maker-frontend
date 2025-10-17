@@ -44,7 +44,7 @@ const Register = () => {
       }
     } catch (err) {
       // This will now catch 409, 500, etc.
-      setError(err.message || "❌ Registration failed");
+      setError(err.message || "❌ Registration failed!!!");
     } finally {
       setLoading(false);
     }
