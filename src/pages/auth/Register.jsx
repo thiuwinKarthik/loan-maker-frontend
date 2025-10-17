@@ -29,15 +29,26 @@ const Register = () => {
     setSuccess("");
 
     try {
-      await registerUser(formData);
-      setSuccess("✅ Registration successful! Redirecting to login...");
-      setTimeout(() => navigate("/"), 2000);
+      // The API call returns the response data
+      const response = await registerUser(formData);
+
+      // CHECK THE RESPONSE!
+      if (response.token) {
+        // Real success: we got a token back
+        setSuccess("✅ Registration successful! Redirecting to login...");
+        // You could also store the token here if needed
+        setTimeout(() => navigate("/"), 2000);
+      } else {
+        // It was a 200 OK response, but a logical failure
+        setError(response.message || "❌ An unknown error occurred.");
+      }
     } catch (err) {
+      // This will now catch 409, 500, etc.
       setError(err.message || "❌ Registration failed");
     } finally {
       setLoading(false);
     }
-  };
+};
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary-600 via-primary-700 to-primary-900 flex items-center justify-center px-4">
