@@ -13,7 +13,7 @@ export const loginUser = async (credentials) => {
 export const registerUser = async (userData) => {
   // userData = { name, email, password }
   try {
-    const response = await axiosInstance.post("/auth/register", userData);
+    const response = await axiosInstance.post("api/auth/register", userData);
     console.log(userData);
     return response.data; // user created info
   } catch (error) {
