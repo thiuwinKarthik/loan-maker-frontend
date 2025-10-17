@@ -13,23 +13,9 @@ export const loginUser = async (credentials) => {
 export const registerUser = async (userData) => {
   // userData = { name, email, password }
   try {
-    const response = await fetch("https://loan-maker-backend.onrender.com/auth/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userData),
-    });
-
-    if (!response.ok) {
-      // Extract error message if available
-      const errorData = await response.json().catch(() => null);
-      throw errorData || { message: "Registration failed" };
-    }
-
-    const data = await response.json();
-    return data; // user created info
+    const response = await axiosInstance.post("/auth/register", userData);
+    return response.data; // user created info
   } catch (error) {
-    throw error;
+    throw error.response?.data || { message: "Registration failed" };
   }
 };
